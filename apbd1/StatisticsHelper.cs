@@ -35,33 +35,11 @@ namespace apbd1
             if (numbers == null || numbers.Length == 0)
                 throw new ArgumentException("The array of numbers cannot be null or empty.");
 
-            Dictionary<int, int> counts = new Dictionary<int, int>();
-
-            foreach (int num in numbers)
-            {
-                if (counts.ContainsKey(num))
-                {
-                    counts[num]++; 
-                }
-                else
-                {
-                    counts[num] = 1; 
-                }
-            }
-
-            int mode = numbers[0];
-            int maxCount = 0;
-
-            foreach (KeyValuePair<int, int> pair in counts)
-            {
-                if (pair.Value > maxCount)
-                {
-                    maxCount = pair.Value;
-                    mode = pair.Key;
-                }
-            }
-
-            return mode;
+            var frequency = numbers.GroupBy(n => n)
+                                   .Select(g => new { Number = g.Key, Count = g.Count() })
+                                   .OrderByDescending(g => g.Count)
+                                   .FirstOrDefault();
+            return frequency != null ? frequency.Number : throw new InvalidOperationException("Unable to determine mode.");
         }
 
     }

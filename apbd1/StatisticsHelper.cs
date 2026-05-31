@@ -22,5 +22,12 @@ namespace apbd1
                 throw new ArgumentException("The array of numbers cannot be null or empty.");
             return numbers.Max(); // LINQ
         }
+
+    public int CalculateMin(int[] values)
+        {
+            // to be implemented
+            return 0; 
+        }
+
     }
 }

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Linq;
+using apbd1;
+
+StatisticsHelper statsHelper = new StatisticsHelper(); // to make calculations available in the menu
 
 // 1. Initial array input
 int[] numbers = GetArrayFromUser();
@@ -10,7 +13,10 @@ while (true)
     Console.WriteLine("\n--- MENU ---");
     Console.WriteLine("1. Show array");
     Console.WriteLine("2. Provide new array");
-    Console.WriteLine("3. Exit");
+    Console.WriteLine("3. Calculate Average");
+    Console.WriteLine("4. Find Maximum Value");
+    Console.WriteLine("5. Find Minimum Value");
+    Console.WriteLine("6. Exit");
     Console.Write("Select an option: ");
 
     string choice = Console.ReadLine();
@@ -27,8 +33,27 @@ while (true)
     }
     else if (choice == "3")
     {
+        double average = statsHelper.CalculateAverage(numbers);
+        Console.WriteLine($"Average: {average:F2}"); // Formatted to 2 decimal places
+    }
+    else if (choice == "4")
+    {
+        int max = statsHelper.CalculateMax(numbers);
+        Console.WriteLine($"Maximum value: {max}");
+    }
+    else if (choice == "5")
+    {
+        int min = statsHelper.CalculateMin(numbers);
+        Console.WriteLine($"Minimum value: {min}");
+    }
+    else if (choice == "6")
+    {
         Console.WriteLine("Goodbye!");
         break;
+    }
+    else
+    {
+        Console.WriteLine("Invalid option. Please choose a number between 1 and 6.");
     }
 }
 

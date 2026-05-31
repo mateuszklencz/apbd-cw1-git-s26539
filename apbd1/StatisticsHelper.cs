@@ -15,5 +15,12 @@ namespace apbd1
 
             return sum / numbers.Length;
         }
+
+    public int CalculateMax(int[] numbers)
+        {
+            if (numbers == null || numbers.Length == 0)
+                throw new ArgumentException("The array of numbers cannot be null or empty.");
+            return numbers.Max(); // LINQ
+        }
     }
 }

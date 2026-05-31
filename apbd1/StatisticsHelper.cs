@@ -23,10 +23,11 @@ namespace apbd1
             return numbers.Max(); // LINQ
         }
 
-    public int CalculateMin(int[] values)
+    public int CalculateMin(int[] numbers)
         {
-            // to be implemented
-            return 0; 
+            if (numbers == null || numbers.Length == 0)
+                throw new ArgumentException("The array of numbers cannot be null or empty.");
+            return numbers.Min(); // LINQ
         }
 
     }
